@@ -4,6 +4,24 @@ A structured planning system for product teams shipping in the AI era. Specs liv
 
 Built by [Aakash Gupta](https://www.news.aakashg.com) from the newsletter [Product Growth](https://www.news.aakashg.com).
 
+## What This Is
+
+- A forkable template for the planning docs that PMs write before features ship.
+- A CLAUDE.md that tells Claude Code how a PM should and shouldn't contribute to the codebase.
+- A skill file that reviews planning docs and flags gaps.
+- A rollout playbook, measurement template, and review cadence for deploying the system to a team.
+
+## What This Isn't
+
+- A code generator — the skill file reviews plans, it doesn't write code.
+- A replacement for engineer review — every PM PR still requires engineer sign-off.
+- Opinionated about which product you're building — the template is stack-agnostic.
+- A substitute for strategy, user research, or stakeholder alignment — this is the artifact layer, not the thinking layer.
+
+## Why Engineers Benefit Too
+
+Engineer review becomes the interesting part of the job — judgment calls on specs and approaches, not mechanical "change this string" tickets. Sharper PLANNING docs mean less back-and-forth. Measured engineer NPS is a program guardrail; if the program costs engineers more than it saves, it ends.
+
 ## What's Inside
 
 ```
