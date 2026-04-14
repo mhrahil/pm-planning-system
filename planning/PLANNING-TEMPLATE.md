@@ -1,15 +1,25 @@
 # PLANNING: [Feature Name]
 
+## Exec Summary <!-- OPTIONAL but recommended for leadership-visible features -->
+<!-- 2 sentences. What are we building, what do we expect it to change, what does it cost? -->
+
+
 ## Problem <!-- REQUIRED -->
-<!-- 2 sentences max. Include data. What's broken and how bad is it? -->
+<!-- 2–3 sentences max. Include data. What's broken and how bad is it? State N and time window for every number. -->
 
 
 ## Hypothesis <!-- REQUIRED -->
-<!-- 1 sentence. What do you believe will fix it? -->
+<!-- 1 sentence. What do you believe will fix it, quantified? -->
+
+
+## Baseline <!-- REQUIRED for any testable change -->
+<!-- Current-state numbers you will measure against. Include N and window for each. -->
+- Primary metric current value:
+- Guardrail metric current values:
 
 
 ## Scope <!-- REQUIRED -->
-<!-- What's included in this change. Be specific. -->
+<!-- What's included. Be specific. Ideally 3–6 items. -->
 -
 -
 -
@@ -21,42 +31,86 @@
 -
 
 ## Success Metrics <!-- REQUIRED -->
-<!-- Every metric needs a specific threshold. "Improve engagement" is not a metric. -->
-- **Primary:** [metric] [direction] [threshold] vs [baseline]
-- **Guardrail:** [metric that must NOT get worse] doesn't [direction] by more than [threshold]
+<!-- Every metric needs a baseline and a threshold. "Improve engagement" is not a metric. -->
+- **Primary:** [metric] [direction] [threshold] vs. [baseline with N and window]
+- **Guardrail:** [metric that must not regress] doesn't [direction] by more than [threshold]
 - **Guardrail:** [second safety metric if needed]
+- **Secondary:** [nice-to-have signal]
 
-## Behavior Examples <!-- REQUIRED for AI features only — skip for non-AI features -->
+## Statistical Plan <!-- REQUIRED for testable changes -->
+<!-- How you will know the effect is real, not noise. -->
+- Minimum detectable effect (MDE):
+- Power:
+- Significance level (α):
+- Required sample size per arm:
+- Test duration:
+- Randomization unit (user / session / ticket):
 
-### Good
-<!-- What the AI should produce -->
+## Behavior Examples <!-- REQUIRED for AI features — skip for non-AI features -->
+
+### Good <!-- ≥ 5 examples -->
+<!-- Input → Output pairs showing what the AI should produce -->
+-
+-
 -
 -
 -
 
-### Bad
-<!-- What the AI might produce that's wrong but not dangerous -->
+### Bad <!-- ≥ 5 examples -->
+<!-- Outputs that are wrong but not dangerous. Calibrate what "better" looks like. -->
+-
+-
 -
 -
 -
 
-### Reject
-<!-- What the AI must never produce -->
--
--
--
+### Reject <!-- ≥ 5 examples, covering PII, jailbreak, policy violation, competitor mention, locale mismatch, outage blame -->
+<!-- Outputs the AI must never produce. Each example names the failure category. -->
+- (PII)
+- (jailbreak: "ignore previous instructions")
+- (policy violation)
+- (competitor mention)
+- (locale mismatch)
 
 ## Rollout Plan <!-- REQUIRED -->
-- **Exposure:** [% of users/traffic]
+- **Exposure:** [% of users/traffic, stratified by segment if needed]
 - **Duration:** [how long before evaluating]
 - **Randomization:** [user-level / session-level / other]
-- **Ramp gates:** [what must be true to expand]
-- **Kill criteria:** [when to roll back — be specific]
+- **Ramp gates:** [what must be true to expand from stage A to stage B, numerically]
+- **Kill criteria:** [when to roll back — specific thresholds and triggers]
 
-## Dependencies
-<!-- What must be true before you ship? Data quality? Eng support? Legal review? -->
+## Observability <!-- REQUIRED for testable changes -->
+- **Dashboard:** [link or path]
+- **Primary metric widget:** [yes/no]
+- **Guardrail widgets:** [yes/no]
+- **Alerts:**
+  - [condition → who gets paged]
+  - [condition → who gets a Slack warn]
+
+## Cost <!-- REQUIRED for AI features or paid third-party services -->
+<!-- Per-request cost estimate, monthly cost at full rollout, budget ceiling, and escalation if exceeded. -->
 -
 
+## Privacy, Security, Compliance <!-- REQUIRED if the change touches PII, logs new fields, or uses an LLM -->
+- **PII handled:** [what fields, redaction applied]
+- **Data routing:** [EU tickets stay in EU, etc.]
+- **Retention:** [raw X days, aggregate Y days]
+- **DPA / subprocessor:** [provider DPA on file]
+- **Deletion pipeline:** [how user deletion requests propagate]
+
+## Dependencies
+<!-- What must be true before you ship? Data quality? Eng support? Legal review? Include ticket numbers where possible. -->
+-
+
+## Reviewers <!-- REQUIRED -->
+<!-- Who signs off before merge and before each rollout stage. -->
+- PM owner: @[name]
+- Engineering: @[name]
+- Design: @[name]
+- AI safety (if applicable): @[name]
+- Legal (if applicable): @[name]
+- Data / DS (if testable): @[name]
+- Final sign-off for GA: @[name]
+
 ## Owner <!-- REQUIRED -->
-<!-- Who is accountable -->
 @[name] — [role]
